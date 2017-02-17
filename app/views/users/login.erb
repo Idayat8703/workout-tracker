@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Log In - Workout Tracker</title>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+  <div id="wrapper">
+    <div id="content">
+      <div id="page">
+        <h2>Log in here!</h2>
+        <% if flash.has?(:message) %>
+          <p><font color="red"><em><%= flash[:message] %></em></font></p>
+        <% end %>
+        <form action="/login" method="post">
+          <p>Username: <input type="text" name="username" placeholder="username"></p>
+          <p>Password: <input type="password" name="password" placeholder="password"></p>
+          <p><input type="submit" value="Log In"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
