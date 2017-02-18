@@ -1,0 +1,36 @@
+<h1>Edit "<%= @workout.name %>"</h1>
+
+  <form role="textbox" action="/workouts/<%= @workout.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+
+    <div class="prompt">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <span class="glyphicon glyphicon-list"></span>
+        </div>
+        <input type="text" name="name" id="name" class="form-control input-lg" placeholder="Workout Name">
+      </div>
+    </div>
+     <br>
+     <div class="prompt">
+       <div class="input-group">
+         <div class="input-group-addon">
+           <span class="glyphicon glyphicon-list"></span>
+         </div>
+         <textarea name="description" id="description" class="form-control input-lg" placeholder="workout Description"></textarea>
+       </div>
+       <br>
+       <select name="workout[completed]" onfocus="setTrue()" required>
+          <option value="" disabled selected hidden> --select an option-- </option>
+          <option value="false" id="false">Not Completed</option>
+          <option value="true" id="true">Completed</option>
+        </select>
+     </div>
+         <div class="prompt">
+            <button type="submit" class="btn btn-primary">Edit Workout</button>
+            <br>
+        </div>
+  </form>
+
+  <h3>Change your mind? Go back to your workouts plans.</h3>
+  <a href="/workouts" class="btn btn-info" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Go Back</a>

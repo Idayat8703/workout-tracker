@@ -1,0 +1,29 @@
+<% if flash[:message] != nil %>
+  <h2><small> <%= flash[:message] %> </small></h2>
+<%end%>
+
+<h1>Add an Workout plan to Your Schedule!</h1>
+
+  <form role="textbox" action="/workouts" method="POST">
+    <div class="prompt">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <span class="glyphicon glyphicon-list"></span>
+        </div>
+        <input type="text" name="name" id="name" class="form-control input-lg" placeholder="Workout Name">
+      </div>
+    </div>
+     <br>
+     <div class="prompt">
+       <div class="input-group">
+         <div class="input-group-addon">
+           <span class="glyphicon glyphicon-list"></span>
+         </div>
+         <textarea name="description" id="description" class="form-control input-lg" placeholder="Workout Description"></textarea>
+       </div>
+     </div>
+     <br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add Workout</button>
+    </div>
+  </form>

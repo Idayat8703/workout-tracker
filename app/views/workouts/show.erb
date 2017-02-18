@@ -1,5 +1,13 @@
-<h1><%= @workout.type_of_workout %><h1>
+<h1><%= @workout.name %> </h1>
+<h3><small><%= @workout.description %><small></h3>
 
-  <h3> Must Do</h3>
+    <br><br>
 
-  
+  <a href="/workouts/<%= @workout.id %>/edit" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-edit"></span> Edit </a>
+
+  <br><br>
+
+  <form method="POST" action="/workouts/<%= @workout.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input class="btn btn-danger"type="submit" value="Delete Workout">
+  </form>

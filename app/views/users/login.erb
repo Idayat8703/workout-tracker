@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Log In - Workout Tracker</title>
-  <link rel="stylesheet" href="/stylesheets/styles.css">
-</head>
-<body>
-  <div id="wrapper">
-    <div id="content">
-      <div id="page">
-        <h2>Log in here!</h2>
-        <% if flash.has?(:message) %>
-          <p><font color="red"><em><%= flash[:message] %></em></font></p>
-        <% end %>
-        <form action="/login" method="post">
-          <p>Username: <input type="text" name="username" placeholder="username"></p>
-          <p>Password: <input type="password" name="password" placeholder="password"></p>
-          <p><input type="submit" value="Log In"></p>
-        </form>
+<% if flash[:message] != nil %>
+  <h2><small> <%= flash[:message] %> </small></h2>
+<%end%>
+
+  <h2>Log in below:</h2><br>
+  <form role="textbox" action="/login" method="POST">
+    <div class="prompt">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <span class="glyphicon glyphicon-user"></span>
+        </div>
+        <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username">
       </div>
     </div>
-  </div>
-</body>
-</html>
+     <br>
+     <div class="prompt">
+       <div class="input-group">
+         <div class="input-group-addon">
+           <span class="glyphicon glyphicon-lock"></span>
+         </div>
+         <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+       </div>
+     </div>
+     <br>
+    <div class="prompt">
+      <button type="submit" class="btn btn-primary">Log In</button>
+    </div>
+  </form>
+
+  <br>
+
+  <h3>Don't have an account?</h3>
+<a href="/signup" class="btn btn-info" role="button"><span class="glyphicon glyphicon-user"></span> Sign Up</a>

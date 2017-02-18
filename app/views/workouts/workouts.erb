@@ -1,0 +1,15 @@
+<% if flash[:message] != nil %>
+  <h2><small> <%= flash[:message] %> </small></h2>
+<%end%>
+<h1>Welcome <%= current_user.username %>!</h1>
+
+<h2>Your Workout Plan:</h2>
+
+<h2><small>Click on a Workout for more information.<small></h2>
+<% @workouts.each do |workout| %>
+<h3><small><li><a href="workouts/<%=workout.id%>"><%= workout.name %></a></li><small></h3>
+<%end%>
+<br>
+<a href="/new" class="btn btn-success" role="button"><span class="glyphicon glyphicon-file"></span> New Workout </a>
+<br><br>
+<a href="/logout" class="btn btn-warning" role="button"><span class="glyphicon glyphicon-log-out"></span> Log Out </a>

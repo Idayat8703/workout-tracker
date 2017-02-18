@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Your Workouts</title>
-  <link rel="stylesheet" href="/stylesheets/styles.css">
-</head>
-<body>
-  <div id="wrapper">
-    <div id="content">
-      <div id="page">
-        <center><h2><%= @user.username %>'s Workout</h2>
-        <a href="/workouts">Home</a> | <a href="/users/<%= @user.id %>">View Your Workout Plan </a> | <a href="/users">Create New Entry</a> | <a href="/logout">Log Out</a></center>
-        <hr>
-        <ol>
-        <% @users_workouts.each do |work| %>
-         <li><a href="/teas/<%= work.id %>"><%= work.description %></a></li>
-        <% end %>
-        </ol>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+<h1>Welcome, <%= @user.username.capitalize %></h1>
+
+<% @user.instruments.each do |instrument|%>
+  <li><%= instrument.name %></li>
+<% end %>
