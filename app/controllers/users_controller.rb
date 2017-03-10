@@ -10,13 +10,13 @@ class UsersController < ApplicationController
 
 # not sure if I need this or not
   get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
+    @user = User.find_by_id(params[:slug])
     erb :'/users/show'
   end
 
   post '/signup' do
-    if params[:password] == ""
-      flash[:message] = "**You must create a password.**"
+    if params[:password] == "" || params[:username] == ""
+      flash[:message] = "**Username and Password fields cannot be blank.**"
       erb :'/users/signup'
     end
     user = User.new(params)
@@ -31,11 +31,11 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    # if logged_in?
-    #   redirect to '/workouts'
-    # else
+    if logged_in?
+      redirect to '/workouts'
+    else
       erb :'/users/login'
-    # end
+    end
   end
 
   post '/login' do
@@ -44,6 +44,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/workouts"
     else
+      flash[:message] = "Username and Password fields cannot be blank."
       erb :'/users/login'
     end
   end
@@ -56,6 +57,7 @@ class UsersController < ApplicationController
     else
       redirect '/'
     end
+
   end
 
 end

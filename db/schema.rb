@@ -22,9 +22,6 @@ ActiveRecord::Schema.define(version: 20170218032730) do
   create_table "workouts", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.boolean  "complete",    default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
   end
 
