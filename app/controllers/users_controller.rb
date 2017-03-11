@@ -4,28 +4,30 @@ class UsersController < ApplicationController
     if logged_in?
       redirect to '/workouts'
     else
+      @user = User.new
       erb :'/users/signup'
     end
   end
 
 # not sure if I need this or not
   get '/users/:slug' do
+    if !logged_in?
+     redirect '/'
+   else
     @user = User.find_by_id(params[:slug])
     erb :'/users/show'
   end
+end
 
   post '/signup' do
-    if params[:password] == "" || params[:username] == ""
-      flash[:message] = "**Username and Password fields cannot be blank.**"
-      erb :'/users/signup'
-    end
-    user = User.new(params)
-    if user.username != "" && user.email != ""
-      user.save
-      session[:user_id] = user.id
+    redirect to '/' if logged_in?
+    @user = User.new(params)
+    if @user.save
+      session[:user_id] = @user.id
       flash[:message] = "You have successfully created a user!"
       redirect to "/workouts"
     else
+      flash[:message] = @user.errors.full_messages.join(", ")
       erb :'/users/signup'
     end
   end
